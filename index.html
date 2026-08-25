@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Actividades</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #222;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #00047b;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #ffffff;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .activities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .activity {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            height: 120px;
+
+            background-color: white;
+            border-radius: 15px;
+
+            text-decoration: none;
+            color: #111;
+
+            font-size: 1.2rem;
+            font-weight: bold;
+
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+
+            transition: 0.2s ease;
+        }
+
+        .activity:hover {
+            transform: translateY(-5px);
+            background-color: #111;
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Actividades Animación Dinámica</h1>
+        <p>Montserrat Partida</p>
+    </header>
+
+    <main>
+
+        <div class="activities">
+
+            <a href="Página html básica.html" class="activity">
+                Actividad 02
+            </a>
+
+            <a href="actividad02.html" class="activity">
+                Actividad 03
+            </a>
+
+            <a href="Golden Globe.html" class="activity">
+                Parte 1
+            </a>
+
+            <a href="actividad05.html" class="activity">
+                Actividad 04
+            </a>
+
+            <a href="actividad06.html" class="activity">
+                Parte 2
+            </a>
+
+        </div>
+
+    </main>
+
+    <footer>
+        © 2026
+    </footer>
+
+</body>
+</html>
