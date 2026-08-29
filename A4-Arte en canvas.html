@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Pagina 4</title>
+  <style>
+      canvas{
+          border: 3px solid rgb(255, 251, 28);
+          background-color: white;
+      }
+  </style>
+
+<script>
+    //window.onload=function(){}
+    var x=0;
+    var y=Math.random() * 600;
+    var dx=2;
+    function animate(){
+        requestAnimationFrame(animate);
+        //console.log('animando');
+        var canvas = document.getElementById("micanvas");
+          var context = canvas.getContext("2d");
+          context.clearRect(0,0, 2000, 1500);
+            context.font = '60pt Arial';
+            context.fillStyle = 'black';
+            context.fillText('Snoopy', x+700, 950);   
+
+          context.fillStyle="black";
+          context.fillRect(x+650,250,200,50);
+          context.fillRect(x+600,250,200,50);
+          context.fillRect(x+850,300,50,50);
+          context.fillRect(x+900,350,50,50);
+          context.fillRect(x+950,400,150,50);
+          context.fillRect(x+1100,450,50,50);
+          context.fillRect(x+1150,500,100,100);
+          context.fillRect(x+1150,600,50,50);
+          context.fillRect(x+1100,650,50,50);
+          context.fillRect(x+1000,700,100 ,50);
+          context.fillRect(x+900,750,100 ,50);
+          context.fillRect(x+850,750,50 ,50);
+          context.fillRect(x+700,750,50 ,50);
+          context.fillRect(x+650,700,50 ,50);
+          context.fillRect(x+600,750,50 ,50);
+          context.fillRect(x+650,650,50 ,50);
+          context.fillRect(x+650,600,50 ,50);
+          context.fillRect(x+650,550,50 ,50);
+          context.fillRect(x+650,500,50 ,50);
+          context.fillRect(x+600,450,50 ,50);
+          context.fillRect(x+850,450,50 ,100);
+          context.fillRect(x+500,750,50 ,50);
+          context.fillRect(x+550,700,50 ,50);
+          context.fillRect(x+550,650,50 ,50);
+          context.fillRect(x+550,600,50 ,50);
+          context.fillRect(x+550,550,50 ,50);
+          context.fillRect(x+550,500,50 ,50);
+          context.fillRect(x+500,450,50 ,50);
+          context.fillRect(x+500,700,50 ,50);
+          context.fillRect(x+500,650,50 ,50);
+          context.fillRect(x+500,600,50 ,50);
+          context.fillRect(x+500,550,50 ,50);
+          context.fillRect(x+500,500,50 ,50);
+          context.fillRect(x+450,550,50 ,250);
+          context.fillRect(x+550,800,50 ,50);
+          context.fillRect(x+500,800,50 ,50);
+          context.fillRect(x+400,500,50 ,250);
+          context.fillRect(x+450,450,50 ,50);
+          context.fillRect(x+450,400,50 ,50);
+          context.fillRect(x+500,350,50 ,50);
+          context.fillRect(x+550,300,50 ,50);
+          context.fillStyle="red";
+          context.fillRect(x+850,800,50 ,50);
+          context.fillRect(x+800,800,50 ,50);
+          context.fillRect(x+750,800,50 ,50);
+          
+
+          if (x > 500 || x < 0){
+                dx= -dx;
+            }
+           x+=dx;
+    }
+    animate();
+</script>
+
+  </head>
+<body>
+   <canvas id="micanvas" width="2000" height="1500"></canvas>
+</body>
+</html>
