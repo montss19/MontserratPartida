@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Snoopys</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body { 
+        text-align: center;
+        background-color:rgb(225, 100, 98);
+      }
+      canvas {
+        background-color:white;
+      }
+      aside {
+    font-family: "Fredoka", sans-serif;
+    font-size: 22px;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+    </style>
+  </head>
+  <body>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <br>
+    <br>
+    <br>
+    <br>
+    <aside>Presiona las letras A, B, C, D y Q para ver diferentes snoopys.</aside>
+    
+    <script src="key codes.js"></script>
+    <script>
+    window.onload = function () {
+      var canvas = document.getElementById("canvas");
+      var context = canvas.getContext("2d");
+      var x = 100;
+      var y = 100;
+      context.font = '40pt Fredoka';
+      context.fillStyle = 'red';
+      context.fillText('Snoopy!', x, y); //<== para poner texto en el canvas
+
+      var imagen= new Image(); // variable para guardar la imagen
+      imagen.src = "snoopy inicio.jpg"; // fuente de donde toma la imagen
+      var imagen1= new Image(); // variable para guardar la imagen
+      imagen1.src = "snoopy 1.jpg"; // fuente de donde toma la imagen
+      var imagen2= new Image(); // variable para guardar la imagen
+      imagen2.src = "snoopy 2.jpeg"; // fuente de donde toma la imagen
+      var imagen4= new Image(); // variable para guardar la imagen
+      imagen4.src = "snoopy 4.jpg"; // fuente de donde toma la imagen
+      var imagen5= new Image(); // variable para guardar la imagen
+      imagen5.src = "snoopy 5.jpg"; // fuente de donde toma la imagen
+      var imagen6= new Image(); // variable para guardar la imagen
+      imagen6.src = "snoopy 6.jpg"; // fuente de donde toma la imagen
+      imagen.onload = function(){
+        context.drawImage(imagen, x, y+50, 400, 200); //<== para poner imagen en el canvas
+      };
+
+  
+
+      function onKeyboardEvent (event) {
+        switch (event.keyCode) {
+        case keycode.UP:
+          console.log("up!");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+          y-=5;
+          context.fillRect(x,y,100,100);
+          break;
+        case keycode.DOWN:
+          console.log("down!");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+          y+=5;
+          context.fillRect(x,y,100,100);
+          break;
+        case keycode.LEFT:
+          console.log("left!");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+          x-=5;
+          context.fillRect(x,y,100,100);
+          break;
+        case keycode.RIGHT:
+          console.log("right!");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+          x+=5;
+          context.fillRect(x,y,100,100);
+          break;
+        case keycode.SPACE:
+          console.log("Jump!");
+          break;
+        case keycode.A:
+          console.log("Letra A");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+          context.fillText('Snoopy dudoso', x, y);
+          context.drawImage(imagen1, x, y+50, 200, 200);
+          break;
+        case keycode.B:
+          console.log("Letra B");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+          context.fillText('Snoopy escritor', x, y);
+          context.drawImage(imagen2, x, y+50, 350, 200);
+          break;
+        case keycode.C:
+          console.log("Letra C");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+          context.fillText('Snoopy pánzon', x, y);
+          context.drawImage(imagen4, x, y+50, 200, 200);
+          break;
+        case keycode.D:
+          console.log("Letra D");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+          context.fillText('Snoopy preocupado', x, y);
+          context.drawImage(imagen6, x, y+50, 200, 200);
+          break;
+        case keycode.Q:
+          console.log("Letra Q");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+          context.fillText('Snoopy enojado', x, y);
+          context.drawImage(imagen5, x, y+50, 200, 200);
+          break;
+        default:
+          console.log(event.keyCode);
+        }
+      }
+
+      window.addEventListener('keydown', onKeyboardEvent, false);
+    };
+    </script>
+  </body>
+</html>
