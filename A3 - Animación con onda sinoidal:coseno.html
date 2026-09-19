@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animación con ondas</title>
+
+    <style>
+        body {
+            margin: 0;
+            background-color: #86b6ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        canvas {
+            background-color: white;
+            border: 3px solid white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas" width="800" height="500"></canvas>
+
+    <script>
+
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        // Imagen
+        const imagen = new Image();
+        imagen.src = "pez.png";
+
+        // Posición del mouse
+        let mouseX = 400;
+        let mouseY = 250;
+
+        // Tiempo para las ondas
+        let tiempo = 0;
+
+        // Detectar movimiento del mouse
+        canvas.addEventListener("mousemove", function(event) {
+
+            const rect = canvas.getBoundingClientRect();
+
+            mouseX = event.clientX - rect.left;
+            mouseY = event.clientY - rect.top;
+
+        });
+
+
+        function animar() {
+
+            // Limpiar canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            let movimientoY = Math.sin(tiempo) * 20;
+
+            let escala = 1 + Math.cos(tiempo) * 0.2;
+            let x = mouseX;
+            let y = mouseY + movimientoY;
+
+
+            let ancho = 160;
+            let alto = 120;
+
+
+         
+            ancho = ancho * escala;
+            alto = alto * escala;
+
+
+      
+            ctx.drawImage(
+                imagen,
+                x - ancho / 2,
+                y - alto / 2,
+                ancho,
+                alto
+            );
+
+
+  
+            tiempo += 0.05;
+
+
+
+            requestAnimationFrame(animar);
+        }
+
+
+
+        imagen.onload = function() {
+            animar();
+        };
+
+    </script>
+
+</body>
+</html>
