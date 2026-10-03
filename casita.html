@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Casa, Hongo, Estrella, Luna y Liebre</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+    <canvas id="canvas" width="1000" height="800"></canvas>
+
+    <script>
+    window.onload = function () {
+
+      var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d');
+
+
+      /* =========================
+         CASA
+      ========================= */
+
+      context.save();
+
+      context.lineWidth = 5;
+      context.strokeStyle = 'purple';
+      context.fillStyle = 'pink';
+
+      // Techo
+      context.beginPath();
+      context.moveTo(100, 250);
+      context.lineTo(200, 150);
+      context.lineTo(300, 250);
+      context.closePath();
+
+      context.fill();
+      context.stroke();
+
+      // Cuerpo de la casa
+      context.fillStyle = 'skyblue';
+
+      context.fillRect(130, 250, 140, 150);
+      context.strokeRect(130, 250, 140, 150);
+
+      // Puerta
+      context.fillStyle = 'brown';
+
+      context.fillRect(180, 320, 40, 80);
+      context.strokeRect(180, 320, 40, 80);
+
+      // Ventana
+      context.fillStyle = 'yellow';
+
+      context.fillRect(145, 275, 35, 35);
+      context.strokeRect(145, 275, 35, 35);
+
+      context.restore();
+
+
+
+
+      context.save();
+
+      context.lineWidth = 5;
+      context.strokeStyle = 'black';
+      context.fillStyle = 'red';
+
+      // Parte superior del hongo
+      context.beginPath();
+      context.arc(500, 280, 80, Math.PI, 0);
+      context.lineTo(580, 280);
+      context.lineTo(420, 280);
+      context.closePath();
+
+      context.fill();
+      context.stroke();
+
+      // Tallo
+      context.fillStyle = 'beige';
+
+      context.beginPath();
+      context.moveTo(455, 280);
+      context.lineTo(545, 280);
+      context.lineTo(535, 400);
+      context.lineTo(465, 400);
+      context.closePath();
+
+      context.fill();
+      context.stroke();
+
+      // Manchas blancas
+      context.fillStyle = 'white';
+
+      context.beginPath();
+      context.arc(460, 240, 12, 0, Math.PI * 2);
+      context.fill();
+
+      context.beginPath();
+      context.arc(500, 215, 15, 0, Math.PI * 2);
+      context.fill();
+
+      context.beginPath();
+      context.arc(540, 245, 12, 0, Math.PI * 2);
+      context.fill();
+
+      context.restore();
+
+
+
+      context.save();
+
+      context.lineWidth = 5;
+      context.strokeStyle = 'orange';
+      context.fillStyle = 'gold';
+
+      context.beginPath();
+
+      context.moveTo(750, 150);
+      context.lineTo(770, 210);
+      context.lineTo(835, 210);
+      context.lineTo(785, 250);
+      context.lineTo(805, 315);
+      context.lineTo(750, 275);
+      context.lineTo(695, 315);
+      context.lineTo(715, 250);
+      context.lineTo(665, 210);
+      context.lineTo(730, 210);
+
+      context.closePath();
+
+      context.fill();
+      context.stroke();
+
+      context.restore();
+
+
+      context.save();
+
+      context.lineWidth = 5;
+      context.strokeStyle = 'darkblue';
+      context.fillStyle = 'lightyellow';
+
+      context.beginPath();
+
+      // Círculo de la luna
+      context.arc(250, 600, 100, 0, Math.PI * 2);
+
+      context.fill();
+      context.stroke();
+
+      // Cubrimos una parte para formar la luna creciente
+      context.fillStyle = 'white';
+      context.strokeStyle = 'white';
+
+      context.beginPath();
+      context.arc(290, 570, 100, 0, Math.PI * 2);
+
+      context.fill();
+      context.stroke();
+
+      context.restore();
+
+
+      /* =========================
+         LIEBRE
+      ========================= */
+
+      context.save();
+
+      context.lineWidth = 5;
+      context.strokeStyle = 'black';
+      context.fillStyle = 'lightgray';
+
+      /* Cabeza */
+
+      context.beginPath();
+      context.arc(700, 600, 55, 0, Math.PI * 2);
+      context.fill();
+      context.stroke();
+
+
+      /* Oreja izquierda */
+
+      context.beginPath();
+      context.ellipse(675, 500, 20, 75, -0.2, 0, Math.PI * 2);
+      context.fill();
+      context.stroke();
+
+
+      /* Oreja derecha */
+
+      context.beginPath();
+      context.ellipse(730, 500, 20, 75, 0.2, 0, Math.PI * 2);
+      context.fill();
+      context.stroke();
+
+
+      /* Cuerpo */
+
+      context.beginPath();
+      context.ellipse(700, 700, 90, 65, 0, 0, Math.PI * 2);
+      context.fill();
+      context.stroke();
+
+
+      /* Ojo */
+
+      context.fillStyle = 'black';
+
+      context.beginPath();
+      context.arc(680, 590, 6, 0, Math.PI * 2);
+      context.fill();
+
+
+      /* Nariz */
+
+      context.beginPath();
+      context.arc(650, 615, 6, 0, Math.PI * 2);
+      context.fill();
+
+
+      /* Cola */
+
+      context.fillStyle = 'white';
+
+      context.beginPath();
+      context.arc(790, 690, 30, 0, Math.PI * 2);
+      context.fill();
+      context.stroke();
+
+      context.restore();
+
+    };
+    </script>
+
+  </body>
+</html>
