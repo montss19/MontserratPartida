@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navecita</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #080d28;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      color: #55d6e8;
+      letter-spacing: 5px;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      margin: 20px auto;
+      border: 2px solid #55d6e8;
+      border-radius: 10px;
+    }
+
+    p {
+      color: #ffcf8b;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>NAVECITA 🚀</h1>
+  <p>↑ Acelerar · ← → Girar</p>
+
+  <canvas id="canvas" width="700" height="500"></canvas>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    // Estado de la nave
+    const ship = {
+      x: 350,
+      y: 300,
+      angle: -Math.PI / 2,
+      vx: 0,
+      vy: 0,
+      acceleration: 0.15,
+      friction: 0.985,
+      turnSpeed: 0.06,
+      flame: false
+    };
+
+    const keys = {};
+    const stars = [];
+
+    for (let i = 0; i < 100; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2 + 0.5
+      });
+    }
+
+    window.addEventListener("keydown", function (e) {
+      if (["ArrowUp", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+        keys[e.key] = true;
+        e.preventDefault();
+      }
+    });
+
+    window.addEventListener("keyup", function (e) {
+      keys[e.key] = false;
+    });
+
+    window.addEventListener("blur", function () {
+      keys.ArrowUp = false;
+      keys.ArrowLeft = false;
+      keys.ArrowRight = false;
+    });
+
+    function drawBackground() {
+      const gradient = ctx.createLinearGradient(0, 0, 700, 500);
+      gradient.addColorStop(0, "#080d28");
+      gradient.addColorStop(0.5, "#172653");
+      gradient.addColorStop(1, "#301b50");
+
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 700, 500);
+
+      // Estrellas
+      ctx.fillStyle = "white";
+      for (const star of stars) {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Planeta
+      const planet = ctx.createRadialGradient(
+        540, 130, 5, 540, 130, 65
+      );
+      planet.addColorStop(0, "#ffc2dc");
+      planet.addColorStop(1, "#7946a8");
+
+      ctx.fillStyle = planet;
+      ctx.beginPath();
+      ctx.arc(540, 130, 65, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Anillo
+      ctx.strokeStyle = "#e7c3ff";
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.ellipse(540, 130, 85, 20, -0.25, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    function updateShip() {
+      if (keys.ArrowLeft) ship.angle -= ship.turnSpeed;
+      if (keys.ArrowRight) ship.angle += ship.turnSpeed;
+
+      ship.flame = !!keys.ArrowUp;
+
+      // Aceleración en la dirección a la que apunta
+      if (ship.flame) {
+        ship.vx += Math.cos(ship.angle) * ship.acceleration;
+        ship.vy += Math.sin(ship.angle) * ship.acceleration;
+      }
+
+      // Fricción: desaceleración gradual
+      ship.vx *= ship.friction;
+      ship.vy *= ship.friction;
+
+      ship.x += ship.vx;
+      ship.y += ship.vy;
+
+      // Límites con rebote
+      const margin = 25;
+
+      if (ship.x < margin) {
+        ship.x = margin;
+        ship.vx = Math.abs(ship.vx) * 0.7;
+      }
+      if (ship.x > canvas.width - margin) {
+        ship.x = canvas.width - margin;
+        ship.vx = -Math.abs(ship.vx) * 0.7;
+      }
+      if (ship.y < margin) {
+        ship.y = margin;
+        ship.vy = Math.abs(ship.vy) * 0.7;
+      }
+      if (ship.y > canvas.height - margin) {
+        ship.y = canvas.height - margin;
+        ship.vy = -Math.abs(ship.vy) * 0.7;
+      }
+    }
+
+    function drawShip() {
+      ctx.save();
+      ctx.translate(ship.x, ship.y);
+      ctx.rotate(ship.angle);
+
+      // Llama de propulsión
+      if (ship.flame) {
+        ctx.fillStyle = "#ff9d42";
+        ctx.beginPath();
+        ctx.moveTo(-12, -6);
+        ctx.lineTo(-28 - Math.random() * 7, 0);
+        ctx.lineTo(-12, 6);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.fillStyle = "#ffe66d";
+        ctx.beginPath();
+        ctx.moveTo(-12, -3);
+        ctx.lineTo(-21, 0);
+        ctx.lineTo(-12, 3);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      // Cuerpo de la nave
+      ctx.fillStyle = "#55d6e8";
+      ctx.strokeStyle = "white";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(25, 0);
+      ctx.lineTo(-15, -17);
+      ctx.lineTo(-8, 0);
+      ctx.lineTo(-15, 17);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Cabina
+      ctx.fillStyle = "#ffffff";
+      ctx.beginPath();
+      ctx.moveTo(12, 0);
+      ctx.lineTo(-3, -5);
+      ctx.lineTo(-3, 5);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    function animate() {
+      drawBackground();
+      updateShip();
+      drawShip();
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
