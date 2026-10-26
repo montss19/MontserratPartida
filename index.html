@@ -1,151 +1,27 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Actividades</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            color: #222;
-            min-height: 100vh;
-        }
-
-        header {
-            background-color: #00047b;
-            color: white;
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            color: #ffffff;
-        }
-
-        main {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .activities {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .activity {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            height: 120px;
-
-            background-color: white;
-            border-radius: 15px;
-
-            text-decoration: none;
-            color: #111;
-
-            font-size: 1.2rem;
-            font-weight: bold;
-
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-
-            transition: 0.2s ease;
-        }
-
-        .activity:hover {
-            transform: translateY(-5px);
-            background-color: #111;
-            color: white;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #777;
-        }
-    </style>
-</head>
-
-<body>
-
-    <header>
-        <h1>Actividades Animación Dinámica</h1>
-        <p>Montserrat Partida</p>
-    </header>
-
-    <main>
-
-        <div class="activities">
-
-            <a href="Página html básica.html" class="activity">
-                Actividad 02
-            </a>
-
-            <a href="index.html" class="activity">
-                Actividad 03
-            </a>
-
-            <a href="Golden Globe.html" class="activity">
-                Parte 1
-            </a>
-
-            <a href="A4-Arte en canvas.html" class="activity">
-                Actividad 04
-            </a>
-
-            <a href="Part2-Reto Canvas.html" class="activity">
-                Parte 2
-            </a>
-            
-            <a href="PROYECTO 2.html" class="activity">
-                Proyecto P1
-            </a>
-            
-             </a>
-
-              <a href="A3 - Animación onda sinoidal:coseno.html" class="activity">
-                Animación con onda
-            </a>
-
-            <a href="04-wave-1.html" class="activity">
-                Animación con onda sinoidal
-            </a>
-
-            <a href="casita.html" class="activity">
-                Dibujo de figuras en el canvas
-            </a>
-            <a href="paint.html" class="activity">
-                Paint
-            </a>
-
-            <a href="NAVECITA.html" class="activity">
-                Navecita
-            </a>
-
-        </div>
-
-    </main>
-
-    <footer>
-        © 2026
-    </footer>
-
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>&lt;model-viewer&gt; template</title>
+    <meta charset="utf-8">
+    <meta name="description" content="&lt;model-viewer&gt; template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" href="./styles.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <!-- <model-viewer> HTML element -->
+    <model-viewer src="mario_super_mushroom.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1">
+      <div class="progress-bar hide" slot="progress-bar">
+          <div class="update-bar"></div>
+      </div>
+      <button slot="ar-button" id="ar-button">
+          View in your space
+      </button>
+      <div id="ar-prompt">
+          <img src="ar_hand_prompt.png">
+      </div>
+    </model-viewer>  
+    <script src="script.js"></script>
+    <!-- Loads <model-viewer> for browsers: -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.4.0/model-viewer.min.js"></script>
+  </body>
 </html>
